@@ -5,15 +5,24 @@ var ButtonBlock = $('.button')
 
 var CurrentDay = moment();
 var CurrentHour = moment().hour();
-var HourId = parseInt(PlansBlock.attr('id'));
+
 
 
 TodaysDate.html(moment().format('[Today is] dddd, MMMM Do'));
 
-console.log(PlansBlock.attr('id'))
 
 function ColorCode(){
+    PlansBlock.each(function(){
+        var HourId = parseInt($(this).attr('id'))
 
+        if(HourId < CurrentHour){
+            $(this).addClass('bg-light')
+        } else if (HourId == CurrentHour){
+            $(this).addClass('bg-danger')
+        } else {
+            $(this).addClass('bg-success')
+        }
+    })
    
 }
-
+ColorCode()
